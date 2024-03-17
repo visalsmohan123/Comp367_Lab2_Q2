@@ -38,6 +38,8 @@ pipeline {
         
         stage('Docker Build') {
             steps {
+				bat 'echo Current Directory: %CD%'
+				bat 'dir'
                 bat 'docker build -t comp367-lab3-image .'
             }
         }
