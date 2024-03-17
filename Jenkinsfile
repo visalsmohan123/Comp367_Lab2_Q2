@@ -14,6 +14,8 @@ pipeline {
         stage('Build Maven Project') {
             steps {
                 bat 'mvn clean install -DskipTests'
+				bat 'mvn clean package'
+                archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
             }
         }
          stage('Build and Test') {
