@@ -39,12 +39,9 @@ pipeline {
         stage('Docker Build') {
             steps {
 				bat 'echo Current Directory: %CD%'
-				bat 'dir'
-				bat 'cd target'
-        
-				// List files in 'target'
-				bat 'dir'
-                bat 'docker build -t comp367-lab3-image .'
+				bat 'dir /b target'
+				
+                bat 'docker build --no-cache -t comp367-lab3-image .'
             }
         }
         
