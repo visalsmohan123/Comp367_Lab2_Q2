@@ -16,7 +16,13 @@ pipeline {
                 bat 'mvn clean package -DskipTests'
             }
         }
-        
+         stage('Build and Test') {
+            steps {
+                script {
+                    bat 'mvn clean test'
+                }
+            }
+        }
         stage('Add Code Coverage') {
             steps {
                 bat 'mvn jacoco:report'
@@ -25,7 +31,7 @@ pipeline {
         
         stage('Add Docker Hub Credentials') {
             steps {
-                withCredentials([usernamePassword(credentialsId: '', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+                withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
                 }
             }
         }
