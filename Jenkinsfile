@@ -13,7 +13,7 @@ pipeline {
         
         stage('Build Maven Project') {
             steps {
-                bat 'mvn clean package -DskipTests'
+                bat 'mvn clean install -DskipTests'
             }
         }
          stage('Build and Test') {
