@@ -40,6 +40,10 @@ pipeline {
             steps {
 				bat 'echo Current Directory: %CD%'
 				bat 'dir'
+				bat 'cd target'
+        
+				// List files in 'target'
+				bat 'dir'
                 bat 'docker build -t comp367-lab3-image .'
             }
         }
